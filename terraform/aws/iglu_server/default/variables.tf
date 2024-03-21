@@ -103,3 +103,18 @@ variable "cloudwatch_logs_retention_days" {
   default     = 7
   type        = number
 }
+
+variable "project_name" {
+  default = "test-iglu"
+  description = "Project name"
+}
+
+variable "project_env" {
+  description = "Environment (e.g. stg, prod)"
+  default = "dev"
+}
+
+variable "region" {
+  default = "eu-west-2"
+  description = "AWS region"
+}

@@ -1,3 +1,24 @@
+locals {
+  name = "${var.project_name}-${var.project_env}"
+  tags = {
+    Blueprint   = local.name
+    GitHubRepo  = "https://github.com/votiakov/snowplow-quickstart-examples"
+    ManagedBy   = "Terraform"
+    Environment = var.project_env
+  }
+}
+
+
+provider "aws" {
+  region = var.region
+
+  default_tags {
+    tags = local.tags
+  }
+}
+
+
+
 # 0. Setup key for SSH into deployed servers
 resource "aws_key_pair" "pipeline" {
   key_name   = "${var.prefix}-iglu_server"
