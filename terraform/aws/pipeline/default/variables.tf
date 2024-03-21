@@ -1,3 +1,18 @@
+variable "project_name" {
+  default = "test-pipeline"
+  description = "Project name"
+}
+
+variable "project_env" {
+  description = "Environment (e.g. stg, prod)"
+  default = "dev"
+}
+
+variable "region" {
+  default = "eu-west-2"
+  description = "AWS region"
+}
+
 variable "accept_limited_use_license" {
   description = "Acceptance of the SLULA terms (https://docs.snowplow.io/limited-use-license-1.0/)"
   type        = bool

@@ -8,7 +8,24 @@ locals {
       vendor_prefixes = []
     }
   ]
+  name = "${var.project_name}-${var.project_env}"
+  tags = {
+    Blueprint   = local.name
+    GitHubRepo  = "https://github.com/votiakov/snowplow-quickstart-examples"
+    ManagedBy   = "Terraform"
+    Environment = var.project_env
+  }
 }
+
+
+provider "aws" {
+  region = var.region
+
+  default_tags {
+    tags = local.tags
+  }
+}
+
 
 module "s3_pipeline_bucket" {
   source  = "snowplow-devops/s3-bucket/aws"
